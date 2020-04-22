@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
+import { Typography } from '@material-ui/core'
+import DashBoard from './components/dashboard/DashBoard'
+
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>MQI APP</h1>
+        <Typography variant='h5' align='left'>MQI Admin</Typography>
       </header>
-
+      <DashBoard />
     </div>
   );
 }
