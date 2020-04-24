@@ -1,0 +1,24 @@
+{
+  "feeds": [{
+      "label": "title",
+      "inputName": "title",
+      "inputType": "text",
+      "placeholder": "Title"
+    },
+    {
+      "label": "feed",
+      "inputName": "feed",
+      "inputType": "text",
+      "placeholder": "Feed",
+      "multiline": true,
+      "rows": 10
+    }
+  ],
+  "events": [{
+    "label": "username",
+    "inputName": "username",
+    "inputType": "text",
+    "placeholder": "Username"
+  }]
+
+}
