@@ -1,4 +1,4 @@
-const addFeed = (payload) => {
+export const addFeed = (payload) => {
   return {
     type: 'ADD_FEED',
     payload
@@ -6,4 +6,3 @@ const addFeed = (payload) => {
 
 }
 
-export default addFeed;

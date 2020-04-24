@@ -1,13 +1,13 @@
 const initState = {
   title: '',
-  description: ''
+  feed: ''
 }
 
 const feedReducer = (state = initState, { type, payload }) => {
   switch (type) {
     case 'ADD_FEED':
       return {
-        ...state, payload
+        ...state, title: payload.title, feed: payload.feed
       }
     default:
       return state
