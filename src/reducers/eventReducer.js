@@ -1,15 +1,12 @@
 const initState = {
-  title: '',
-  description: '',
-  valid_until: '',
-  event_image: ''
+  events: []
 }
 
 const eventReducer = (state = initState, { type, payload }) => {
   switch (type) {
-    case 'ADD_EVENT':
+    case 'GET_EVENTS':
       return {
-        ...state, payload
+        ...state, events: [payload]
       }
     default:
       return state

@@ -1,19 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import { Typography } from '@material-ui/core'
 import '../../App.css';
 import Modal from '../modals/Modal'
-import { addFeed } from '../../actions/feedAction'
-import { addEvent } from '../../actions/eventAction';
+import { addFeed, getFeeds } from '../../actions/feedAction'
+import { addEvent, getEvents } from '../../actions/eventAction';
 import formFields from '../../setting/formfields.json'
-import ListComponent from '../list/ListComponent'
-import feedReducer from '../../reducers/feedReducer'
-import eventReducer from '../../reducers/eventReducer'
+import FeedList from '../list/FeedList'
+import EventsList from '../list/EventsList'
 
 
 
-export default function DashBoard() {
 
 
+function DashBoard(props) {
+
+  useEffect(() => {
+    props.feeds()
+    props.events()
+
+  }, [])
 
 
 
@@ -21,20 +27,40 @@ export default function DashBoard() {
     <div className='dashboard'>
       <div className='feeds-list'>
         <div className='list-header'>
-          <Typography variant='h5'>All Feeds</Typography>
+
+          <Typography variant='h5' style={{ marginBottom: 50 }} >All Feeds</Typography>
           <Modal action={addFeed} title='New Feed' formFields={formFields.feeds} />
 
         </div>
-        <ListComponent reducer={feedReducer} />
+        <FeedList data={props.stateFeeds} dataName='feeds' />
       </div>
       <div className='events-list'>
         <div className='list-header'>
-          <Typography variant='h5'>Upcoming Events</Typography>
+          <Typography variant='h5' style={{ marginBottom: 50 }}>Upcoming Events</Typography>
           <Modal title='New Event' action={addEvent} formFields={formFields.events} />
 
         </div>
-        <ListComponent reducer={eventReducer} />
+        <EventsList data={props.stateEvents} dataName='events' />
       </div>
     </div>
   )
 }
+
+const mapDispatchToProps = dispatch => {
+
+  return {
+    feeds: data => dispatch(getFeeds(data)),
+    events: data => dispatch(getEvents(data))
+
+  }
+}
+const mapStateToProps = state => {
+
+  return {
+    stateEvents: state.eventReducer,
+    stateFeeds: state.feedReducer
+
+  }
+
+}
+export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)

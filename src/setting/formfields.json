@@ -1,24 +1,45 @@
 {
   "feeds": [{
-      "label": "title",
+      "label": "Title",
       "inputName": "title",
       "inputType": "text",
       "placeholder": "Title"
     },
     {
-      "label": "feed",
+      "label": "Feed",
       "inputName": "feed",
       "inputType": "text",
       "placeholder": "Feed",
       "multiline": true,
       "rows": 10
+    },
+
+    {
+      "label": "Valid till",
+      "inputName": "valid_till",
+      "inputType": "date",
+      "placeholder": "Valid Until"
     }
   ],
   "events": [{
-    "label": "username",
-    "inputName": "username",
-    "inputType": "text",
-    "placeholder": "Username"
-  }]
+      "label": "Title",
+      "inputName": "title",
+      "inputType": "text",
+      "placeholder": "Title"
+    },
+
+    {
+      "label": "Valid till",
+      "inputName": "valid_till",
+      "inputType": "date",
+      "placeholder": "Valid Until"
+    },
+    {
+      "label": "choose-image",
+      "inputName": "image",
+      "inputType": "file",
+      "placeholder": "Choose Image"
+    }
+  ]
 
 }

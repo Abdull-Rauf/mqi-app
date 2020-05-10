@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,32 +10,51 @@ import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 
 function Modal(props) {
 
-  // console.log('modalProps:', props)
-
+  const actionName = props.action.name
+  const action = props[actionName]
 
   const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     title: '',
-    feed: ''
+    feed: '',
+    valid_till: '',
+    country: 'SE',
+    image: []
   });
+
 
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (pl) => {
+    action(pl);
     setOpen(false);
-  };
-  const handleChange = (e) => {
 
-    const newData = { ...data, [e.target.name]: e.target.value }
+  }
+  const handleChange = (e) => {
+    let newData;
+    if (e.target.name === 'image') {
+      newData = { ...data, image: [...data.image, e.target.files[0]] }
+
+    } else {
+      newData = { ...data, [e.target.name]: e.target.value }
+
+    }
+
     setData(newData)
   };
 
 
+  const formData = new FormData();
+  formData.append('title', data.title);
+  formData.append('feed', data.feed);
+  formData.append('date', data.valid_till);
+  formData.append('country', data.country);
+  formData.append('image', data.image[0])
 
-  const actionName = props.action.name
+
 
   return (
     <div>
@@ -52,12 +71,12 @@ function Modal(props) {
             <CloseOutlinedIcon />
           </Button>
         </div>
-
         <DialogContent>
           <FormComponent fields={props.formFields} close={handleClose}
-            action={props[actionName]}
-            data={data}
-            handleChange={(e) => handleChange(e)} />
+            action={handleClose}
+            data={formData}
+            handleChange={(e) => handleChange(e)}
+          />
         </DialogContent>
       </Dialog>
     </div>

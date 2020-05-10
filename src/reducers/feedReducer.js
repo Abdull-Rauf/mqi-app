@@ -1,13 +1,19 @@
 const initState = {
-  title: '',
-  feed: ''
+  feeds: [],
+  isDeleted: false
 }
 
+
 const feedReducer = (state = initState, { type, payload }) => {
+
   switch (type) {
-    case 'ADD_FEED':
+    case 'GET_FEEDS':
       return {
-        ...state, title: payload.title, feed: payload.feed
+        ...state, feeds: [payload]
+      }
+    case 'DEL_FEEDS':
+      return {
+        ...state, isDeleted: !state.isDeleted
       }
     default:
       return state
