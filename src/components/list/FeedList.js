@@ -37,7 +37,7 @@ function FeedList(props) {
           <Card style={{ height: 'auto', width: '90%', marginLeft: 'auto', marginRight: 'auto', marginBottom: 50, padding: 10 }} key={i}>
             <Typography variant='h5'>{item.feed_title}</Typography>
             <br />
-            <Typography align='left'>{item.feed_id}</Typography>
+            <Typography align='left'>{item.feed_description}</Typography>
             <br />
             <Button variant="outlined" color="primary" onClick={() => handleClickOpen(item.feed_id)}>
               Delete

@@ -5,9 +5,15 @@ import { connect } from 'react-redux'
 
 
 function EventsList(props) {
-  const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+
+  const [open, setOpen] = React.useState(false);
+  const [id, setId] = React.useState('');
+  const [imageName, setImageName] = React.useState('');
+
+  const handleClickOpen = (itemId, image) => {
+    setId(itemId);
+    setImageName(image)
     setOpen(true);
   };
 
@@ -36,35 +42,36 @@ function EventsList(props) {
 
             <CardMedia image={item.image_url} style={{ minHeight: '50vh', width: '90%' }} alt='poster' />
             <br />
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            <Button variant="outlined" color="primary" onClick={() => handleClickOpen(item.event_id, item.image_name)}>
               Delete
              </Button>
-            <Dialog
-              disableBackdropClick
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-            >
-              <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                  Do you really want to delete this feed
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                  Cancel
-                </Button>
-                <Button onClick={() => handleDelete(item.event_id, item.image_name)} color="primary" autoFocus>
-                  Delete
-                </Button>
-              </DialogActions>
-            </Dialog>
+
 
           </Card>
         )
       }
       )}
+      <Dialog
+        disableBackdropClick
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Do you really want to delete this feed
+                </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+                </Button>
+          <Button onClick={() => handleDelete(id, imageName)} color="primary" autoFocus>
+            Delete
+                </Button>
+        </DialogActions>
+      </Dialog>
 
 
     </div>
