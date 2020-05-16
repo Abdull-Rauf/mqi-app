@@ -6,8 +6,10 @@ import { connect } from 'react-redux'
 function FeedList(props) {
 
   const [open, setOpen] = React.useState(false);
+  const [id, setId] = React.useState('');
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (itemID) => {
+    setId(itemID)
     setOpen(true);
   };
 
@@ -16,9 +18,10 @@ function FeedList(props) {
   };
 
   const handleDelete = (payload) => {
+    console.log(payload)
     props.feed(payload);
-    console.log(payload);
     setOpen(false);
+
   };
 
 
@@ -34,37 +37,39 @@ function FeedList(props) {
           <Card style={{ height: 'auto', width: '90%', marginLeft: 'auto', marginRight: 'auto', marginBottom: 50, padding: 10 }} key={i}>
             <Typography variant='h5'>{item.feed_title}</Typography>
             <br />
-            <Typography align='left'>{item.feed_description}</Typography>
+            <Typography align='left'>{item.feed_id}</Typography>
             <br />
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+            <Button variant="outlined" color="primary" onClick={() => handleClickOpen(item.feed_id)}>
               Delete
              </Button>
-            <Dialog
-              disableBackdropClick
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-            >
-              <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                  Do you really want to delete this feed
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                  Cancel
-                </Button>
-                <Button onClick={() => handleDelete(item.feed_id)} color="primary" autoFocus>
-                  Delete
-                </Button>
-              </DialogActions>
-            </Dialog>
+
 
           </Card>
         )
       }
-      )}
+      )
+      }
+      <Dialog
+        disableBackdropClick
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Do you really want to delete this feed
+                </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+                </Button>
+          <Button onClick={() => handleDelete(id)} color="primary" autoFocus>
+            Delete
+                </Button>
+        </DialogActions>
+      </Dialog>
 
 
     </div>

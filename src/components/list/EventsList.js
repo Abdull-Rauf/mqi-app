@@ -19,7 +19,7 @@ function EventsList(props) {
     formData.append('event_id', id)
     formData.append('url', url)
 
-    props.event(formData)
+    props.delete(formData)
     setOpen(false);
   };
 
@@ -74,7 +74,7 @@ function EventsList(props) {
 const mapDispatchToProps = dispatch => {
 
   return {
-    event: data => dispatch(delEvents(data)),
+    delete: data => dispatch(delEvents(data)),
 
   }
 }

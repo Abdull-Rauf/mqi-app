@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../App.css';
-import { TextField, Button, Divider } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 
 
 const FormComponent = props => {
