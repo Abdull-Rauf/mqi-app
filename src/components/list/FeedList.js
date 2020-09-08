@@ -9,6 +9,7 @@ function FeedList(props) {
   const [id, setId] = React.useState('');
 
   const handleClickOpen = (itemID) => {
+    console.log(itemID)
     setId(itemID)
     setOpen(true);
   };
@@ -67,7 +68,7 @@ function FeedList(props) {
                 </Button>
           <Button onClick={() => handleDelete(id)} color="primary" autoFocus>
             Delete
-                </Button>
+          </Button>
         </DialogActions>
       </Dialog>
 
