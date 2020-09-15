@@ -1,0 +1,32 @@
+.feeds-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0%;
+  width: 80%;
+  background-color: #f1f1f1;
+  ;
+
+}
+
+.feeds-list {
+  width: 49%;
+  background-color: white;
+  padding-top: 20px;
+
+}
+
+.events-list {
+  width: 49%;
+  margin-left: 2%;
+  background-color: white;
+  padding-top: 20px;
+
+}
+
+.list-header {
+  width: 60%;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

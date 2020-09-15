@@ -8,47 +8,31 @@ body {
   text-align: center;
 }
 
+.logo {
+  color: white;
+  text-decoration: none;
+}
+
 .App-header {
   background-color: #469cc4;
   min-height: 10vh;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-left: 5%;
+  padding: 0 5% 0 5%;
 }
 
-.dashboard {
-  display: flex;
+.container {
   margin: 5vh auto auto auto;
-  width: 90%;
-  min-height: 70vh;
-
-}
-
-.feeds-list {
-  width: 49%;
+  width: 80%;
+  min-height: 75vh;
   background-color: white;
-  padding-top: 20px;
+  padding: 30px 50px 0;
 
 }
 
-.events-list {
-  width: 49%;
-  margin-left: 2%;
-  background-color: white;
-  padding-top: 20px;
-
-}
-
-.list-header {
-  width: 60%;
-  margin-left: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 .form {
   display: flex;

@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Typography } from '@material-ui/core'
 import '../../App.css';
-import Modal from '../modals/Modal'
+import './feeds.css';
+import Modal from '../../components/modals/Modal'
 import { addFeed, getFeeds } from '../../actions/feedAction'
 import { addEvent, getEvents } from '../../actions/eventAction';
 import formFields from '../../setting/formfields.json'
-import FeedList from '../list/FeedList'
-import EventsList from '../list/EventsList'
+import FeedList from '../../components/list/FeedList'
+import EventsList from '../../components/list/EventsList'
 
 
 
 
 
-function DashBoard(props) {
+function FeedsPosters(props) {
 
   useEffect(() => {
     props.feeds()
@@ -24,7 +25,7 @@ function DashBoard(props) {
 
 
   return (
-    <div className='dashboard'>
+    <div className='container feeds-container'>
       <div className='feeds-list'>
         <div className='list-header'>
 
@@ -63,4 +64,4 @@ const mapStateToProps = state => {
   }
 
 }
-export default connect(mapStateToProps, mapDispatchToProps)(DashBoard)
+export default connect(mapStateToProps, mapDispatchToProps)(FeedsPosters)

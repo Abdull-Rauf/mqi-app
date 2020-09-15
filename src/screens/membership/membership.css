@@ -1,0 +1,16 @@
+.membership-container {
+  flex-direction: row;
+  padding-top: 50px;
+  width: 50%;
+  background-color: white;
+}
+
+
+.member-form {
+  width: 80%;
+  margin-left: 10%
+}
+
+.members-form-fields {
+  margin-bottom: 10px;
+}

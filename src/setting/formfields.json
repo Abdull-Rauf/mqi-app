@@ -40,6 +40,32 @@
       "inputType": "file",
       "placeholder": "Choose Image"
     }
+  ],
+  "members": [{
+      "label": "First Name",
+      "inputName": "first_name",
+      "inputType": "text",
+      "placeholder": "First Name"
+    },
+    {
+      "label": "Last Name",
+      "inputName": "last_name",
+      "inputType": "text",
+      "placeholder": "Last Name"
+    },
+
+    {
+      "label": "email",
+      "inputName": "email",
+      "inputType": "email",
+      "placeholder": "Email address"
+    },
+    {
+      "label": "telephone",
+      "inputName": "Telephone",
+      "inputType": "text",
+      "placeholder": "Telephone Number"
+    }
   ]
 
 }
