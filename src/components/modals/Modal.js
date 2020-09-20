@@ -29,6 +29,7 @@ function Modal(props) {
   };
 
   const handleClose = (pl) => {
+    console.log(pl)
     action(pl);
     setOpen(false);
 

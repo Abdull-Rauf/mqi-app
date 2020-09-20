@@ -2,6 +2,8 @@ import Axios from 'axios';
 
 export const addFeed = payload => dispatch => {
 
+  console.log('action')
+
   Axios.post(`https://minhaj.se/app-api/add_feed.php`, payload, {
     headers: {
       'Content-Type': 'multipart/form-data'

@@ -1,50 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Typography } from '@material-ui/core'
 import '../../App.css';
 import './membership.css';
 import FormComponent from '../../components/form/FormComponent'
-import { addFeed, getFeeds } from '../../actions/feedAction'
-import { addEvent, getEvents } from '../../actions/eventAction';
+import { addMember } from '../../actions/memberAction'
 import formFields from '../../setting/formfields.json'
-import MembersList from '../../components/list/MembersList'
 
 
 
 
-function MemberShip(props) {
+const MemberShip = (props) => {
 
   const [data, setData] = useState({
-    firstname: '',
-    lastname: '',
+    personnummer: '',
+    name: '',
+    mobile: '',
     email: '',
-    telephone: '',
+    address: '',
+    membership_type: ''
   });
 
 
-
-  useEffect(() => {
-    props.feeds()
-
-  }, [])
   const handleChange = (e) => {
-    let newData;
-    if (e.target.name === 'image') {
-      newData = { ...data, image: [...data.image, e.target.files[0]] }
 
-    } else {
-      newData = { ...data, [e.target.name]: e.target.value }
-
-    }
-
+    let newData = { ...data, [e.target.name]: e.target.value }
     setData(newData)
   };
 
+  const handleSubmit = payload => {
+    props.addMember(payload)
+  }
+
+
   const formData = new FormData();
-  formData.append('firstname', data.name);
-  formData.append('lastname', data.lastname);
+  formData.append('personnummer', data.personnummer);
+  formData.append('name', data.name);
+  formData.append('mobile', data.mobile);
   formData.append('email', data.email);
-  formData.append('telephone', data.telephone);
+  formData.append('address', data.address);
+  formData.append('membership_type', data.membership_type);
 
 
   return (
@@ -56,27 +51,19 @@ function MemberShip(props) {
           inputClass='members-form-fields'
           data={formData}
           handleChange={(e) => handleChange(e)}
+          action={handleSubmit}
         />
       </div>
     </div>
   )
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
 
   return {
-    feeds: data => dispatch(getFeeds(data)),
-    events: data => dispatch(getEvents(data))
+    addMember: data => dispatch(addMember(data)),
 
   }
 }
-const mapStateToProps = state => {
 
-  return {
-    stateEvents: state.eventReducer,
-    stateFeeds: state.feedReducer
-
-  }
-
-}
-export default connect(mapStateToProps, mapDispatchToProps)(MemberShip)
+export default connect(null, mapDispatchToProps)(MemberShip)
