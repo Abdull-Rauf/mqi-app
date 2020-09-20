@@ -42,18 +42,22 @@
     }
   ],
   "members": [{
-      "label": "First Name",
-      "inputName": "first_name",
+      "label": "Personnummer",
+      "inputName": "personnummer",
+      "inputType": "number",
+      "placeholder": "Personnummer"
+    }, {
+      "label": "Name",
+      "inputName": "name",
       "inputType": "text",
-      "placeholder": "First Name"
+      "placeholder": "Name"
     },
     {
-      "label": "Last Name",
-      "inputName": "last_name",
+      "label": "Mobile",
+      "inputName": "mobile",
       "inputType": "text",
-      "placeholder": "Last Name"
+      "placeholder": "Mobile Number"
     },
-
     {
       "label": "email",
       "inputName": "email",
@@ -61,11 +65,19 @@
       "placeholder": "Email address"
     },
     {
-      "label": "telephone",
-      "inputName": "Telephone",
+      "label": "Address",
+      "inputName": "address",
       "inputType": "text",
-      "placeholder": "Telephone Number"
+      "placeholder": "Address"
+    },
+    {
+      "label": "Membership Type",
+      "inputName": "membership_type",
+      "inputType": "text",
+      "placeholder": "Membership Type"
     }
+
+
   ]
 
 }

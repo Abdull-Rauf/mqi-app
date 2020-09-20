@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Typography } from '@material-ui/core'
 import '../../App.css';
@@ -20,7 +20,7 @@ function FeedsPosters(props) {
     props.feeds()
     props.events()
 
-  }, [])
+  }, [props])
 
 
 
