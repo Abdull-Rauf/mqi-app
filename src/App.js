@@ -25,14 +25,16 @@ function App() {
               MQI Admin{" "}
             </Link>
           </Typography>
-          <Button
-            onClick={() => {
-              localStorage.removeItem("isLoggedIn");
-              return window.location.reload();
-            }}
-          >
-            <Typography className="logo">Logout</Typography>
-          </Button>
+          {isLogged?.isLogin && (
+            <Button
+              onClick={() => {
+                localStorage.removeItem("isLoggedIn");
+                return window.location.reload();
+              }}
+            >
+              <Typography className="logo">Logout</Typography>
+            </Button>
+          )}
         </header>
 
         <Switch>
