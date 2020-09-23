@@ -76,14 +76,7 @@
       "inputName": "address",
       "inputType": "text",
       "placeholder": "Address"
-    },
-    {
-      "label": "Membership Type",
-      "inputName": "membership_type",
-      "inputType": "text",
-      "placeholder": "Membership Type"
     }
-
 
   ]
 

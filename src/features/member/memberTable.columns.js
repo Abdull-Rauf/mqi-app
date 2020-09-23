@@ -57,7 +57,7 @@ const columns = [
     },
   },
   {
-    name: "member_type",
+    name: "membership_type",
     label: "Membership Type",
     options: {
       filter: true,
