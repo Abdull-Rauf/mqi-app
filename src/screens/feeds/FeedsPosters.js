@@ -20,7 +20,7 @@ function FeedsPosters(props) {
     props.feeds()
     props.events()
 
-  }, [props])
+  }, [])
 
 
 

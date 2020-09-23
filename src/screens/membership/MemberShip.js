@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import Axios from 'axios';
 import { Typography } from '@material-ui/core'
 import '../../App.css';
 import './membership.css';
@@ -13,6 +14,7 @@ import formFields from '../../setting/formfields.json'
 const MemberShip = (props) => {
 
   const [data, setData] = useState({
+    membership_no: '',
     personnummer: '',
     name: '',
     mobile: '',
@@ -29,11 +31,25 @@ const MemberShip = (props) => {
   };
 
   const handleSubmit = payload => {
-    props.addMember(payload)
+    // props.addMember(payload)
+    // setData(data)
+
+    Axios.post(`https://minhaj.se/app-api/add_member.php`, payload, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+      .then(res => {
+        console.log(res)
+        setData({ ...data })
+      }
+      )
+      .catch(err => console.log(err))
   }
 
 
   const formData = new FormData();
+  formData.append('membership_no', data.membership_no);
   formData.append('personnummer', data.personnummer);
   formData.append('name', data.name);
   formData.append('mobile', data.mobile);
