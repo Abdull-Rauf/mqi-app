@@ -1,1 +1,1 @@
-export { Toaster } from "./errorToaster.component";
+export { Toaster } from "./toaster.component";

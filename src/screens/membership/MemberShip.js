@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Axios from "axios";
-import { Typography } from "@material-ui/core";
+import { Typography, Paper } from "@material-ui/core";
 import "../../App.css";
-import "./membership.css";
+import "./membership.scss";
 import FormComponent from "../../components/form/FormComponent";
 import { addMember } from "../../actions/memberAction";
 import formFields from "../../setting/formfields.json";
 import { Toaster } from "../../components/toaster";
+import { getMemberListService } from "../../services/member.service";
+import MemberTable from "../../features/member";
 
 const MemberShip = (props) => {
   const [status, setStatus] = useState({
@@ -15,8 +17,7 @@ const MemberShip = (props) => {
     message: "",
     isSubmitted: false,
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const [members, setMembers] = useState("");
   const [data, setData] = useState({
     membership_no: "",
     personnummer: "",
@@ -27,6 +28,15 @@ const MemberShip = (props) => {
     membership_type: "",
   });
 
+  const getAllMembers = () => {
+    const response = getMemberListService();
+    return response;
+  };
+  useEffect(() => {
+    getAllMembers()
+      .then((res) => setMembers(res?.events))
+      .catch((err) => console.log(err));
+  }, [props.members]);
   const handleChange = (e) => {
     let newData = { ...data, [e.target.name]: e.target.value };
     setData(newData);
@@ -44,6 +54,9 @@ const MemberShip = (props) => {
       .then((res) => {
         if (res?.data?.db_status) {
           setData({ ...data });
+          getAllMembers()
+            .then((res) => setMembers(res?.events))
+            .catch((err) => console.log(err));
           return setStatus({
             isError: false,
             message: "Member inserted successfully!!!",
@@ -69,8 +82,8 @@ const MemberShip = (props) => {
   formData.append("membership_type", data.membership_type);
 
   return (
-    <div className="container membership-container">
-      <div className="member-form">
+    <div className="membership">
+      <Paper className="membership__member-form">
         <Typography variant="h5" style={{ marginBottom: 50 }}>
           Add New Member
         </Typography>
@@ -81,6 +94,9 @@ const MemberShip = (props) => {
           handleChange={(e) => handleChange(e)}
           action={handleSubmit}
         />
+      </Paper>
+      <div className="membership__member-table">
+        {members.length > 0 && <MemberTable members={members} />}
       </div>
       {status.isError && <Toaster type="error" message={status.message} />}
       {status.isSubmitted && (
