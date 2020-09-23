@@ -1,0 +1,15 @@
+.membership {
+  display: flex;
+  &__member-form {
+    width: 30vw;
+    margin-left: 10px;
+    max-height: 800px;
+    background-color: white;
+  }
+  &__member-table {
+    width: 100%;
+    margin-top: 30px;
+    margin-right: 5px;
+    margin-left: 5px;
+  }
+}
