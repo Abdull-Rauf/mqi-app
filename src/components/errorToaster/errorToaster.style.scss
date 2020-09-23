@@ -1,0 +1,13 @@
+@import "react-toastify/scss/main.scss";
+
+.Toastify__toast-body {
+  color: rgb(247, 247, 247);
+}
+
+.error__message {
+  background-color: rgba(221, 25, 25, 0.897);
+}
+
+.success__message {
+  background: #07bc0c;
+}
