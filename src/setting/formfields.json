@@ -42,11 +42,18 @@
     }
   ],
   "members": [{
+      "label": "membership_no",
+      "inputName": "membership_no",
+      "inputType": "text",
+      "placeholder": "Membership Number"
+    },
+    {
       "label": "Personnummer",
       "inputName": "personnummer",
-      "inputType": "number",
-      "placeholder": "Personnummer"
-    }, {
+      "inputType": "text",
+      "placeholder": "Personnummer (19xxxxxx-xxxx)"
+    },
+    {
       "label": "Name",
       "inputName": "name",
       "inputType": "text",

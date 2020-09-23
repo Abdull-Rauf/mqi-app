@@ -14,12 +14,13 @@ export const addMember = payload => dispatch => {
     .catch(err => console.log(err))
 
 }
-// export const getMembers = () => dispatch => {
 
-//   Axios.get(`https://minhaj.se/app-api/get_members.php`)
-//     .then(res => dispatch({ type: 'GET_MEMBER', payload: res.data.members }))
-//     .catch(err => console.log(err))
-// }
+export const getMembers = () => dispatch => {
+
+  Axios.get(`https://minhaj.se/app-api/get_members.php`)
+    .then(res => dispatch({ type: 'GET_MEMBER', payload: res.data.members }))
+    .catch(err => console.log(err))
+}
 
 // export const delMember = payload => dispatch => {
 
