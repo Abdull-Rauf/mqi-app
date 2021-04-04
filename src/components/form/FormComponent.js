@@ -7,7 +7,7 @@ import { TextField, Button } from "@material-ui/core";
 const FormComponent = (props) => {
   return (
     <form className="form">
-      <select
+      {/* <select
         className='membership_list'
         variant='outlined'
         name="membership_type"
@@ -21,7 +21,7 @@ const FormComponent = (props) => {
           return <option value={type} key={i}>{type}</option>
         })}
 
-      </select>
+      </select> */}
       <br />
       {props.fields.map((field, index) => {
         return (
